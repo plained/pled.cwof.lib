@@ -1,5 +1,6 @@
 var fs = require('fs'),
-    path = require('path');
+    path = require('path'),
+    request = require('request');
 
 exports = module.exports = {
     getDefaultResponse: function (req, res)
@@ -15,19 +16,20 @@ exports = module.exports = {
     getResource: function (req, res)
     {
         var resourcePath = req.url;
-        var basePath = path.dirname(fs.realpathSync(__filename)) + '/../resources';
+        var basePath = 'https://github.com/plained/pled.cwof.lib/blob/master/resources';
         var filePath = basePath + resourcePath + '.json';
         console.log(filePath);
-        if (fs.existsSync(filePath)) {
-            var resourceJson = fs.readFileSync(filePath);
-            res.writeHead(200, {"Content-Type": "application/json"});
-            res.write(resourceJson);
-            res.end();            
-        }
-        else {
-            res.writeHead(404, {"Content-Type": "application/json"});
-            res.write('{"r":"Resource ' + resourcePath + ' unavailable"}');
-            res.end();
-        }
+        request(filePath, function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                res.writeHead(200, {"Content-Type": "application/json"});
+                res.write(body);
+                res.end();                  
+            }
+            else {
+                res.writeHead(404, {"Content-Type": "application/json"});
+                res.write('{"r":"Resource ' + resourcePath + ' unavailable"}');
+                res.end();        
+            }
+        })
     }
 }
