@@ -16,7 +16,7 @@ exports = module.exports = {
     getResource: function (req, res)
     {
         var resourcePath = req.url;
-        var basePath = 'https://github.com/plained/pled.cwof.lib/blob/master/resources';
+        var basePath = 'https://raw.githubusercontent.com/plained/pled.cwof.lib/master/resources';
         var filePath = basePath + resourcePath + '.json';
         console.log(filePath);
         request(filePath, function (error, response, body) {
