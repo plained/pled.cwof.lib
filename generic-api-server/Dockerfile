@@ -1,11 +1,12 @@
 #Using temporary image
 FROM node:latest 
-MAINTAINER govindaraj.rangan@wipro.com
+LABEL maintainer govindaraj.rangan@gmail.com
 RUN apt-get update && apt-get install -y \
   nodejs npm && rm -rf /var/lib/apt/lists/*
 # set default workdir  
-COPY * /opt/
+COPY ./ /opt/
 WORKDIR /opt
 RUN npm install
 # Run Web Server
 CMD ["npm", "start"]
+EXPOSE 3000
