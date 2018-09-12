@@ -1,0 +1,13 @@
+{
+  "name": "generic-api-server",
+  "version": "1.0.0",
+  "description": "Generic API Server",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Govindaraj Rangan",
+  "dependencies": {
+    "express": "^4.12.4"
+  }
+}
