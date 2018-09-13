@@ -41,5 +41,10 @@ exports = module.exports = {
                 res.end();        
             }
         })
+    },
+    updResource: function(req,res){
+        res.writeHead(404, {"Content-Type": "application/json"});
+        res.write('{"r":"Resource ' + resourcePath + ' changed successfully"}');
+        res.end();        
     }
 }
