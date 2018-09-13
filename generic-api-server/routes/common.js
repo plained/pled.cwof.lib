@@ -19,7 +19,13 @@ exports = module.exports = {
         var basePath = 'https://raw.githubusercontent.com/plained/pled.cwof.lib/master/resources';
         var filePath = basePath + resourcePath + '.json';
         console.log(filePath);
-        request(filePath, function (error, response, body) {
+        request({url: filePath, 
+                headers:[{"Content-Type": "application/json",
+                        "Cache-Control": "private, no-cache, no-store, must-revalidate",
+                        "Expires": "-1",
+                        "Pragma": "no-cache"
+                }]}, 
+                function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 res.writeHead(200, {"Content-Type": "application/json",
                                     "Cache-Control": "private, no-cache, no-store, must-revalidate",
