@@ -21,12 +21,12 @@ exports = module.exports = {
         console.log(filePath);
         request(filePath, function (error, response, body) {
             if (!error && response.statusCode == 200) {
-                res.writeHead(200, {"Content-Type": "application/json", "Cache-Control": "no-cache"});
+                res.writeHead(200, {"Content-Type": "application/json"});
                 res.write(body);
                 res.end();                  
             }
             else {
-                res.writeHead(404, {"Content-Type": "application/json", "Cache-Control": "no-cache"});
+                res.writeHead(404, {"Content-Type": "application/json"});
                 res.write('{"r":"Resource ' + resourcePath + ' unavailable"}');
                 res.end();        
             }
