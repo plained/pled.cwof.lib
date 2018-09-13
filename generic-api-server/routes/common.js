@@ -21,7 +21,11 @@ exports = module.exports = {
         console.log(filePath);
         request(filePath, function (error, response, body) {
             if (!error && response.statusCode == 200) {
-                res.writeHead(200, {"Content-Type": "application/json"});
+                res.writeHead(200, {"Content-Type": "application/json",
+                                    "Cache-Control": "private, no-cache, no-store, must-revalidate",
+                                    "Expires": "-1",
+                                    "Pragma": "no-cache"
+                                    });
                 res.write(body);
                 res.end();                  
             }
