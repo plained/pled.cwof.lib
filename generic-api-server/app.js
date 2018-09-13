@@ -5,6 +5,7 @@ var nocache = require('nocache');
 
 var app = express();
 app.use(nocache());
+
 app.get('/', common.getDefaultResponse);
 app.get('*', common.getResource);
 
