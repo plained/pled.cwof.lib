@@ -9,6 +9,7 @@
   "author": "Govindaraj Rangan",
   "dependencies": {
     "express": "^4.12.4",
+    "passport-oauth2": "^1.4.0",
     "request": "^2.88.0"
   }
 }
